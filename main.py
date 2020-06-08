@@ -1,0 +1,76 @@
+from HornClause import HornClause
+from InferenceMethods import forwardChaining, backwardChaining
+from KnowledgeBase import KnowledgeBase
+from Literal import Literal
+
+A=Literal("A")
+B=Literal("B")
+C=Literal("C")
+D=Literal("D")
+E=Literal("E")
+F=Literal("F")
+G=Literal("G")
+H=Literal("H")
+I=Literal("I")
+L=Literal("L")
+M=Literal("M")
+N=Literal("N")
+O=Literal("O")
+P=Literal("P")
+Q=Literal("Q")
+R=Literal("R")
+
+clause1 = HornClause(A)
+clause2 = HornClause(B)
+clause3 = HornClause(C)
+clause4 = HornClause(D)
+clause5 = HornClause(E)
+clause6 = HornClause(F)
+clause7 = HornClause(G)
+clause8 = HornClause(H)
+clause9 = HornClause(I,[A,B])
+clause10 = HornClause(L,[C,D])
+clause11 = HornClause(M, [E,F])
+clause12 = HornClause(N, [G,H])
+clause13 = HornClause(P, [I,L])
+clause14 = HornClause(Q, [M,N])
+clause15 = HornClause(R, [P,Q])
+
+KB = KnowledgeBase()
+KB.addClause(clause1)
+KB.addClause(clause2)
+KB.addClause(clause3)
+KB.addClause(clause4)
+KB.addClause(clause5)
+KB.addClause(clause6)
+KB.addClause(clause7)
+KB.addClause(clause8)
+KB.addClause(clause9)
+KB.addClause(clause10)
+KB.addClause(clause11)
+KB.addClause(clause12)
+KB.addClause(clause13)
+KB.addClause(clause14)
+KB.addClause(clause15)
+
+
+KB.printKB()
+graph = KB.getANDORGraph()
+graph.plotGraph(KB,[], "plots/mainGraph.png")
+query = KB.getLiteral(input("Please input the query to demonstrate: "))
+
+FC_results = forwardChaining(KB,query)
+print("ForwardChaining resulted in: " + str(FC_results[0]))
+graph.plotGraph(KB,FC_results[1],"plots/mainGraph.png")
+BC_results = backwardChaining(KB,graph, query)
+print("BackwardChaining resulted in: " + str(BC_results[0]))
+graph.plotGraph(KB,BC_results[1],"plots/mainGraph.png")
+if(BC_results[0]):
+    print("With path: ", end='')
+    counter = len(BC_results[2])
+    for step in BC_results[2]:
+        print(step, end='')
+        counter -= 1
+        if(counter != 0):
+            print(",", end='')
+    print("")
