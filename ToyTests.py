@@ -22,6 +22,7 @@ clauseP12 = HornClause(P12, [B11,B22])
 clauseP21 = HornClause(P21, [B11,B22])
 clauseB21 = HornClause(B21)
 clauseB12 = HornClause(B12)
+clauseB32 = HornClause(B32, [P22])
 clauseP31 = HornClause(P31,[B21, B32])
 
 KB = KnowledgeBase()
@@ -32,6 +33,7 @@ KB.addClause(clauseB21)
 KB.addClause(clauseB12)
 KB.addClause(clauseP22)
 KB.addClause(clauseP31)
+KB.addClause(clauseB32)
 
 
 KB.printKB()

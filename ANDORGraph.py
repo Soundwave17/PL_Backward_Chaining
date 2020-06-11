@@ -135,7 +135,7 @@ class ANDORGraph:
                 nx.draw_networkx_nodes(G, pos, nodelist=FACT_nodes, node_color="green", node_shape="o",
                                        node_size=base_size, with_labels=True)
                 if (inferredCheck):
-                    nx.draw_networkx_nodes(G, pos, nodelist=INFERRED_nodes, node_color="purple", node_shape="o",
+                    nx.draw_networkx_nodes(G, pos, nodelist=INFERRED_nodes, node_color="yellow", node_shape="o",
                                            node_size=base_size, with_labels=True)
                 nx.draw_networkx_edges(G, pos, edgelist=edges, arrowsize=25, node_size=base_size)
             plt.savefig(FILEPATH, format="PNG")
@@ -196,7 +196,7 @@ class ANDORGraph:
                 nx.draw_networkx_nodes(G, pos, nodelist=FACT_nodes, node_color="green", node_shape="o",
                                        node_size=base_size, with_labels=True)
                 if (inferredCheck):
-                    nx.draw_networkx_nodes(G, pos, nodelist=INFERRED_nodes, node_color="purple", node_shape="o",
+                    nx.draw_networkx_nodes(G, pos, nodelist=INFERRED_nodes, node_color="yellow", node_shape="o",
                                            node_size=base_size, with_labels=True)
                 nx.draw_networkx_edges(G, pos, edgelist=edges, arrowsize=25, node_size=base_size)
 
